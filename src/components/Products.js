@@ -1,49 +1,36 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+
 
 
 function Products() {
-    const [products,SetProducts]=useState(null);
+    const [products,SetProducts]=useState([]);
+    
     useEffect(() => {
-        axios.get('https://fakestoreapi.com/products')
-    .then(response => {
-  
-        console.log(response.data);
+        fetch('https://fakestoreapi.com/products')
+    .then(response => response.json())
+    .then(json=>SetProducts(json))
+    },[]);
+      //console.log(products);
       
-        SetProducts(response.data);
-        //console.log(products);
-  
-    }).catch(error => {
+     
       
-      console.log(error);
-    })
-      });
-      console.log(products);
-      const listproducts = this.products.map(product => (
-        <div key={product.id} className="flex">
-          <div className="flex-none">
-         
-          </div>
-          <div className="flex-1">
-            {product.title}
-          </div>
-          <div className="flex-1">
-            <img src='{product.image}'  alt='{product.title}' width="150px"/>
-          </div>
-          <div className="flex-1">
-          Amazon
-         </div>
+      
+      
+  return <div className="container mx-auto .p-3">
+    <div className="flex flex-wrap -mx-2 mb-6 .p-2">
 
-         
+    {products.map(product=>{
+      return <div className="w-full md:w-1/2 lg:w-1/3 px-2 mb-4 .p-2" key={product.id}>
+        <div><img src={product.image} className="object-contain h-48 w-full"/></div>
+        <div>{product.title}</div>
+        <div>${product.price}</div>
+        <div><button type="button" class="text-black bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:focus:ring-yellow-900">Add to Cart</button>
+</div>
+        
         </div>
-      ));
-      
-      
-      
-  return <div>
 
-    {listproducts}
-
+    })}
+ </div>
   </div>;
 }
 
