@@ -1,6 +1,6 @@
 #Minimal Shopping cart
 Shopping cart with Contextapi.
-
+Demo : https://minimal-shopping-cart-react.herokuapp.com/
 clone this app 
 
 1.  ### npm install
