@@ -9,7 +9,7 @@ import GooglePayButton from '@google-pay/button-react';
 function ShoppingCart() {
   let navigate = useNavigate();
   
-  const { cart,addtocart,carttotal } = useAPI();
+  const { cart,addtocart,carttotal,removefromcart } = useAPI();
   
 
   //console.log(cart);
@@ -21,12 +21,12 @@ function ShoppingCart() {
      </div>
      <div className="flex flex-col justify-between ml-4 flex-grow">
        <span className="font-bold text-sm"> {cartitem.title}</span>
+      
        
-       <a href="#" className="font-semibold hover:text-red-500 text-gray-500 text-xs">Remove</a>
      </div>
    </div>
    <div className="flex justify-center w-1/5">
-   - {cartitem.quantity} <button onClick={(e) => addtocart(cartitem)} >+</button>
+   <button onClick={(e) => removefromcart(cartitem)} >-  </button> &nbsp;  {cartitem.quantity}   &nbsp;<button onClick={(e) => addtocart(cartitem)} >+</button>
 
      
 

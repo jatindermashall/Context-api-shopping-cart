@@ -7,6 +7,17 @@ export function APIContextProvider({ children }) {
   const [products, setProducts] = useState([]);
   const [cart, setcart] = useState([]);
   const [carttotal, setcarttotal] = useState([0]);
+  function removefromcart(product) {
+         const cart_temp=[...cart];
+    const cartindex=cart.findIndex(obj => obj.id === product.id);
+    console.log(cart[cartindex].quantity);
+    cart[cartindex].quantity>1 ? cart_temp[cartindex].quantity--:cart_temp.splice(cartindex,1);
+    console.log(cart[cartindex].quantity);
+    //console.log(cart_temp);
+    setcart(cart_temp);
+    //console.log(cart);
+    setcarttotal((parseInt(carttotal)-parseInt(product.price)).toFixed(2));
+  }
   function addtocart(product) {
     
     if(cart.find(cartel => cartel.id===product.id))
@@ -44,7 +55,8 @@ export function APIContextProvider({ children }) {
         products,
         addtocart,
         cart,
-        carttotal
+        carttotal,
+        removefromcart
       }}
     >
       {children}
