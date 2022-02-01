@@ -6,6 +6,7 @@ const APIContext = createContext();
 export function APIContextProvider({ children }) {
   const [products, setProducts] = useState([]);
   const [cart, setcart] = useState([]);
+  const [carttotal, setcarttotal] = useState([0]);
   function addtocart(product) {
     
     if(cart.find(cartel => cartel.id===product.id))
@@ -19,10 +20,11 @@ export function APIContextProvider({ children }) {
       product.quantity=1;
       setcart(cart=>[...cart,product]);
     }
-   
-    //console.log(product);
     
-    console.log(cart);
+    setcarttotal((parseInt(carttotal)+parseInt(product.price)).toFixed(2));
+    //console.log("cart total"+carttotal);
+    
+    //console.log(cart);
   }
   
   useEffect(() => {
@@ -41,7 +43,8 @@ export function APIContextProvider({ children }) {
       value={{
         products,
         addtocart,
-        cart
+        cart,
+        carttotal
       }}
     >
       {children}

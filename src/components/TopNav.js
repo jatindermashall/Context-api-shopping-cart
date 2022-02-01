@@ -66,11 +66,11 @@ function TopNav() {
         <a href="#" className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Contact</a>
       </li>
       <li className="font-sans block mt-4 lg:inline-block lg:mt-0 lg:ml-6 align-middle text-black hover:text-gray-700">
-  <a href="#" role="button" className="relative flex flex-end">
+  <div href="#" role="button" className="relative flex flex-end">
     
       <span className="absolute right-0 top-0 rounded-full bg-red-600 w-4 h-4 top right p-0 m-0 text-white font-mono text-sm  leading-tight text-center"><Link to="/cart">{(cart.reduce((a,v) =>  a = a + v.quantity , 0 ))}</Link>
     </span>
-  </a>
+  </div>
 </li>
     </ul>
   </div>

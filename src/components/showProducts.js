@@ -1,4 +1,4 @@
-import React,{ useContext, useEffect} from 'react';
+import React from 'react';
 import { useAPI } from "../context/cartContext";
 
 function ShowProducts() {
@@ -20,7 +20,13 @@ function ShowProducts() {
         </div>
 
     })}
+
+      
+
  </div>
+
+
+ 
   </div>;
 }
 
